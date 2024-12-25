@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internships & Job Opportunities - LearnSmart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f06, #4e73df);
+            color: white;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .header {
+            background: #ff7f50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 32px;
+            animation: bounceIn 2s;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translateY(-100%); }
+            60% { transform: translateY(20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            animation: slideIn 2s;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+
+        .job-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .job-card {
+            width: 30%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: scale(1.05);
+        }
+
+        .job-card h3 {
+            color: #ff7f50;
+            font-size: 22px;
+        }
+
+        .job-card p {
+            color: #333;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e2a47;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .links-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .links-section a {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .links-section a:hover {
+            background-color: #0056b3;
+        }
+
+        .job-card p span {
+            font-weight: bold;
+            color: #ff7f50;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>Internship & Job Opportunities</h1>
+    <p>Explore exciting opportunities for Engineering Students</p>
+</div>
+
+<!-- Job Listings Container -->
+<div class="container">
+    <h2>Current Openings</h2>
+    <div class="job-section">
+        <!-- Placeholder Job Cards (can be dynamically updated later) -->
+        <div class="job-card">
+            <h3>Software Engineer Intern</h3>
+            <p><span>Company:</span> Tech Innovations Ltd.</p>
+            <p><span>Location:</span> Remote</p>
+            <p><span>Duration:</span> 6 months</p>
+            <p><span>About the Role:</span> Join our team as a software engineering intern and contribute to cutting-edge projects. Gain hands-on experience in coding and problem-solving.</p>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer%20Intern" target="_blank" class="apply-btn">Apply on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Data Science Intern</h3>
+            <p><span>Company:</span> Data Insights Inc.</p>
+            <p><span>Location:</span> Remote</p>
+            <p><span>Duration:</span> 4 months</p>
+            <p><span>About the Role:</span> Work with a dynamic team to analyze data, build models, and develop insights for large-scale projects. Excellent learning opportunity!</p>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=Data%20Science%20Intern" target="_blank" class="apply-btn">Apply on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Web Developer Intern</h3>
+            <p><span>Company:</span> WebTech Innovations</p>
+            <p><span>Location:</span> Remote</p>
+            <p><span>Duration:</span> 6 months</p>
+            <p><span>About the Role:</span> Help build and maintain cutting-edge web applications, work with a team of experts, and learn new frameworks.</p>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=Web%20Developer%20Intern" target="_blank" class="apply-btn">Apply on LinkedIn</a>
+        </div>
+
+        <!-- Add More Job Cards -->
+        <div class="job-card">
+            <h3>Product Management Intern</h3>
+            <p><span>Company:</span> InnovateX</p>
+            <p><span>Location:</span> New York, NY</p>
+            <p><span>Duration:</span> 3 months</p>
+            <p><span>About the Role:</span> Join the product management team and learn how to oversee product development from ideation to launch.</p>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=Product%20Management%20Intern" target="_blank" class="apply-btn">Apply on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Mobile App Developer</h3>
+            <p><span>Company:</span> AppDev Solutions</p>
+            <p><span>Location:</span> Remote</p>
+            <p><span>Duration:</span> 6 months</p>
+            <p><span>About the Role:</span> Build and improve mobile applications with modern frameworks and design principles.</p>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=Mobile%20App%20Developer" target="_blank" class="apply-btn">Apply on LinkedIn</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Cloud Computing Intern</h3>
+            <p><span>Company:</span> CloudGen</p>
+            <p><span>Location:</span> Remote</p>
+            <p><span>Duration:</span> 6 months</p>
+            <p><span>About the Role:</span> Work on cloud infrastructure, architecture, and optimization for high-demand environments.</p>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=Cloud%20Computing%20Intern" target="_blank" class="apply-btn">Apply on LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- Links to Internship and Job Websites -->
+    <div class="links-section">
+        <h3>Top Internship & Job Search Websites:</h3>
+        <a href="https://www.linkedin.com/jobs" target="_blank">LinkedIn Jobs</a>
+        <a href="https://www.indeed.com" target="_blank">Indeed</a>
+        <a href="https://www.glassdoor.com" target="_blank">Glassdoor</a>
+        <a href="https://www.naukri.com" target="_blank">Naukri</a>
+        <a href="https://angel.co/jobs" target="_blank">AngelList</a>
+        <a href="https://internshala.com" target="_blank">Internshala</a>
+        <a href="https://www.simplyhired.com" target="_blank">SimplyHired</a>
+        <a href="https://www.gointern.in" target="_blank">GoIntern</a>
+        <a href="https://www.upwork.com" target="_blank">Upwork</a>
+        <a href="https://www.fiverr.com" target="_blank">Fiverr</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>LearnSmart - Empowering Engineering Students</p>
+    <p><a href="mailto:navyashreensgr@gmail.com">Contact Us</a> | <a href="https://www.linkedin.com" target="_blank">Follow us on LinkedIn</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LearnSmart</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4e73df, #1e2a47);
+            color: #fff;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .contact-container {
+            width: 60%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea, button {
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #007bff;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup.show {
+            display: block;
+        }
+
+        .chatbot-container {
+            width: 35%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .chat-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .chat-box {
+            width: 100%;
+            height: 300px;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow-y: auto;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .chat-input {
+            width: 100%;
+            display: flex;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+
+        .chat-input button {
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+
+        .chat-response {
+            margin: 10px 0;
+            padding: 10px;
+            background: #333;  /* Dark background for responses */
+            color: #fff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .chat-response.me {
+            background: #007bff;  /* Blue for user messages */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Contact Form -->
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chat-header">
+            <img src="https://i.imgur.com/JYrHkXh.png" alt="Chatbot">
+            <span>Hi! I'm MeowBot, your helper!</span>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-response">Meow! Do you have any queries?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userMessage" placeholder="Type your question...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Notification -->
+<div class="popup" id="popup">
+    Your response has been recorded. Thank you!
+</div>
+
+<script>
+    // Initialize EmailJS
+    (function () {
+        emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Gather form data
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // Send email via EmailJS
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            to_name: "LearnSmart Team",
+            from_name: name,
+            message: message,
+            reply_to: email
+        }).then(function () {
+            // Show success popup
+            const popup = document.getElementById('popup');
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 3000);
+        }, function (error) {
+            // Show error popup
+            alert("There was an error sending your message. Please try again.");
+            console.error(error);
+        });
+
+        // Reset form fields
+        document.getElementById("contactForm").reset();
+    });
+
+    // Chatbot Logic
+    const chatbotResponses = {
+        "hi": "Hello smartest! Meow! How can I assist you today?",
+        "hello": "Hello smartest! Meow! How can I help you?",
+        "haii": "Haii smartest! Meow! What can I do for you today?",
+        "hey": "Hey there! Meow! Ready to help you!",
+        "how are you": "Meow! I'm doing great, thank you for asking! 😊 But please ask me something related to LearnSmart.",
+        "course": "Meow! We offer free top-selected engineering courses and internship opportunities. Explore them on our website!",
+        "about learnsmart": "Meow! LearnSmart is a platform dedicated to providing engineering students with high-quality educational resources. Our website offers a variety of *free engineering courses, **tutorials, and **internship opportunities* for aspiring engineers. We aim to help students excel in their studies, land internships, and grow in their careers. Check out our homepage to explore more!",
+        "engineering": "Meow! Engineering is all about innovation. Are you interested in a specific branch of engineering? Let me know!",
+        "help": "Meow! I'm here to assist you with courses, internships, and any other questions you have about LearnSmart.",
+        "tutorial": "Meow! Check our tutorial section for step-by-step guides and learning materials on various engineering topics.",
+        "contact": "Meow! You can contact us anytime by using the contact form above or through our email.",
+        "thank you": "Meow! You're very welcome! If you need anything else, just ask!",
+        "goodbye": "Meow! Goodbye, take care, and don't hesitate to return if you have more questions!",
+        "job opportunities": "Meow! LearnSmart posts internship and job opportunities for engineering students. Check the Opportunities page!",
+        "ai": "Meow! AI is a field of study that simulates human intelligence processes in machines. It's a cool area to explore!",
+        "data science": "Meow! Data science is about analyzing data to extract meaningful insights. It’s a big part of the tech world!",
+        "machine learning": "Meow! Machine Learning is a subset of AI, where machines learn from data and improve over time.",
+        "deep learning": "Meow! Deep learning is a part of machine learning focused on neural networks and large datasets.",
+        "python": "Meow! Python is an excellent programming language for data science, web development, and machine learning. It's very beginner-friendly!"
+    };
+
+    function sendMessage() {
+        const userMessage = document.getElementById('userMessage').value;
+        if (!userMessage.trim()) return;
+
+        const chatBox = document.getElementById('chatBox');
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.classList.add('chat-response', 'me');
+        userMessageDiv.textContent = userMessage;
+        chatBox.appendChild(userMessageDiv);
+
+        const botResponseDiv = document.createElement('div');
+        botResponseDiv.className = 'chat-response';
+        botResponseDiv.textContent = generateBotResponse(userMessage);
+        chatBox.appendChild(botResponseDiv);
+
+        document.getElementById('userMessage').value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function generateBotResponse(userMessage) {
+        // Normalize user message and check for keywords
+        const normalizedMessage = userMessage.toLowerCase();
+        for (const key in chatbotResponses) {
+            if (normalizedMessage.includes(key)) {
+                return chatbotResponses[key];
+            }
+        }
+        return "Meow! I didn't quite understand that. Can you ask something related to LearnSmart?";
+    }
+</script>
+</body>
+</html>
